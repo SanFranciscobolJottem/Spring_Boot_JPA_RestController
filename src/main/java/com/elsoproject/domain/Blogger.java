@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Blogger {
 	
@@ -16,6 +18,8 @@ public class Blogger {
 	private Long id;
 	private String name;
 	private int age;
+	
+	@JsonBackReference
 	@OneToMany(mappedBy = "blogger")
 	private List<Story> stories;
 	
@@ -55,6 +59,10 @@ public class Blogger {
 		this.stories = stories;
 	}
 
+	@Override
+	public String toString() {
+		return "Blogger [name=" + name + "]";
+	}
 	
 
 }

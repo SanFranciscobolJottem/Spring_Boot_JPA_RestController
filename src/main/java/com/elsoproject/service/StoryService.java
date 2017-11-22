@@ -3,8 +3,6 @@ package com.elsoproject.service;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +37,10 @@ public class StoryService {
 
 	public Story getSpecificStory(String title) {
 		return storyRepo.findByTitle(title);
+	}
+
+	public List<Story> getStoriesByBloggerName(String name) {
+		return storyRepo.findAllByBloggerNameIgnoreCaseOrderByPostedDesc(name);
 	}
 	
 //	@PostConstruct
